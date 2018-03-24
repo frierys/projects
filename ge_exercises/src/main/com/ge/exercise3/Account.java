@@ -1,5 +1,8 @@
 package com.ge.exercise3;
 
+import java.math.BigDecimal;
+import java.math.MathContext;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -31,7 +34,7 @@ public class Account {
         this(accountNumber, "Savings", 0.0f);
     }
 
-    public float valueNextMonth() {
+    public float valueNextMonth(){
         return (balance * monthlyInterestRate) - monthlyFee;
     }
 
