@@ -43,4 +43,23 @@ public class BankTest {
         bank.withdrawFromAccount("004", 100.0f);
         assertEquals(0.0f, account.getBalance(), 0.01);
     }
+	
+	@Test
+	public void getCurrentHoldingsTest()
+	{
+		Account account = new Account("005");
+		bank.depositToAccount(account.getAccountNumber(), 10000.0f);
+		assertEquals(10400.0f, bank.getCurrentHoldings(), 0.01);
+	}
+	
+	@Test
+	public void closeAccountTest()
+	{
+		Account account = bank.getAccount("005");
+		assertEquals("Account balance must be zero before it can be removed.", bank.closeAccount(account));
+		
+		bank.withdrawFromAccount(10000.0f);
+		bank.closeAccount(account);
+		assertEquals(4, bank.numAccounts());
+	}
 }
